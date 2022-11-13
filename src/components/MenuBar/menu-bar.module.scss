@@ -1,0 +1,31 @@
+@import "src/css/color.scss";
+@import "src/css/units.scss";
+
+.menu {
+    width: 100%;
+    height: $menubar-height;
+    background-color: white;
+    filter: drop-shadow(0 0 1em rgba(0, 0, 0, 0.1));
+    display: flex;
+    border-bottom-left-radius: $radius;
+    border-bottom-right-radius: $radius;
+}
+
+.logo {
+    margin: 0.8rem;
+    height: auto;
+    vertical-align: middle;
+}
+
+.spacer {
+    margin-right: 0.6rem;
+}
+
+.group {
+    display: flex;
+    align-items: center;
+}
+
+.prefix {
+    flex-grow: 1;
+}

@@ -1,0 +1,104 @@
+@import "src/css/color.scss";
+@import "src/css/units.scss";
+
+.container {
+    min-width: 518px;
+    min-height: 718px;
+    background-color: white;
+    border-radius: $radius;
+    padding: 1rem;
+    filter: drop-shadow(0 0 1em rgba(0, 0, 0, 0.1));
+}
+
+.title {
+    margin: 0.5rem;
+    font-weight: 600;
+    font-size: 21px;
+}
+
+.subtitle {
+    font-size: 18px;
+    margin: 0.3rem;
+    font-weight: 500;
+}
+
+.list {
+    display: flex;
+    flex-flow: wrap;
+    height: 310px;
+    overflow: auto;
+}
+
+.card {
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    width: 240px;
+    height: 60px;
+    max-width: 240px;
+    max-height: 60px;
+    border-radius: $radius;
+    overflow: hidden;
+    transform: translate3d(0,0,0);
+    border: 1px solid $disabled-color;
+    display: flex;
+    align-items: center;
+    .overlay {
+        p {
+            margin: auto;
+            color: white;
+        }
+        display: flex;
+        position: fixed;
+        // z-index:-1;
+        // transition: ease $animation-duration;
+        opacity: 0;
+    }
+    .info {
+        margin-left: 1rem;
+        display: flex;
+        flex-direction: column;
+        .name {
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            text-overflow: ellipsis;
+            margin: 0;
+        }
+        .version {
+            margin: 0;
+            margin-left: 0.1rem;
+            font-weight: 400;
+            text-overflow:ellipsis;
+            color: $tips-color;
+            font-size: 10px;
+        }
+        .detail {
+            margin: 0;
+            font-weight: 400;
+            text-overflow:ellipsis;
+            color: $tips-color;
+            font-size: 12px;
+        }
+    }
+    img {
+        width: 97.5px;
+        height: 60px;
+    }
+}
+
+.card:hover {
+    .overlay {
+        opacity: 1;
+        background: rgba(0, 0, 0, 0.3);
+        width: 97.5px;
+        height: 60px;
+        top: auto;
+    }
+}
+
+.loading {
+    margin: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

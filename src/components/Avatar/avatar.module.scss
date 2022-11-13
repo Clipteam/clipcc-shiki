@@ -1,0 +1,13 @@
+@import "src/css/color.scss";
+
+.container {
+    display: flex;
+    height: 100%;
+}
+
+.container img {
+    border-radius: 50%;
+    border: 1px solid $plain-color;
+    overflow: none;
+    margin: 0.4rem;
+}

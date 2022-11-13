@@ -1,0 +1,17 @@
+@import "src/css/color.scss";
+@import "src/css/units.scss";
+
+.container {
+    display: flex;
+    flex-direction: column;
+    min-width: $sidebar-width;
+    max-width: $sidebar-width;
+    height: 100%;
+    background-color: $plain-color;
+    border-radius: $radius;
+    filter: drop-shadow(0 0 1em rgba(0, 0, 0, 0.1));
+}
+
+.icon {
+    padding: 0.7em 0;
+}

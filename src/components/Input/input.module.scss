@@ -1,0 +1,36 @@
+@import "src/css/color.scss";
+@import "src/css/units.scss";
+
+.input {
+  border-radius: $radius;
+  outline-style: none;
+  cursor: text;
+  overflow: hidden;
+  width: auto;
+  font-weight: 500;
+  max-width: 10rem;
+  padding: 0.8em 1.2em;
+  border: 2px solid transparent;
+  background-color: $plain-color;
+  transition: ease $animation-duration;
+}
+
+.bordered {
+    background-color: transparent;
+    border: 2px solid $disabled-color;
+}
+
+.input::placeholder {
+    font-weight: 500;
+    font-size: 1em;
+  }
+  
+.input:hover {
+    border-color: $primary-color;
+}
+
+.input:focus {
+    border: 2px solid $primary-color;
+    box-shadow: 0 0 0 0.25rem $primary-color-transparent;
+    filter: drop-shadow(0 0 1em $primary-color-transparent);
+}

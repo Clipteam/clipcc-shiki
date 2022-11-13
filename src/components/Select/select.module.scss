@@ -1,0 +1,94 @@
+@import "../../css/color.scss";
+@import "../../css/units.scss";
+
+.container {
+    position: relative;
+}
+
+.select {
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    height: 2.25rem;
+    background-color: $plain-color;
+    border-radius: $radius;
+    transition: $animation-duration ease-out;
+    min-width: 10rem;
+    border: 2px solid transparent;
+}
+
+.select:hover {
+    border-color: $primary-color;
+}
+
+.selectFocus {
+    border: 2px solid $primary-color;
+    filter: drop-shadow(0 0 2em $primary-color-transparent);
+    box-shadow: 0 0 0 0.25rem $primary-color-transparent;
+}
+
+.value {
+    padding: 0.5rem;
+}
+
+.indicator {
+    display: flex;
+    position: relative;
+    align-self: stretch;
+}
+
+.image {
+    padding: 0.5rem;
+    transition-duration: $animation-duration;
+}
+
+.imageRotate {
+    transform: rotate(180deg);
+}
+
+.menu {
+    position: absolute;
+    width: calc(100% - 4px);
+    margin-top: 0.25rem;
+    background: white;
+    border-radius: $radius;
+    padding: 0.25rem;
+    filter: drop-shadow(0 0 1em rgba(0, 0, 0, 0.2));
+    animation: slide $animation-duration ease;
+    z-index: 1; /* what the fuck. why translateX modifies z-index?! */
+}
+
+@keyframes slide {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.option {
+    height: 2rem;
+    line-height: 2rem;
+    padding: 0.1rem 1rem;
+}
+
+.optionSelect {
+    color: $primary-color;
+    font-weight: bold;
+}
+
+.optionFocus {
+    background-color: $primary-color-transparent;
+    border-radius: $radius;
+}
+
+.dummyInput {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    margin: 0;
+}

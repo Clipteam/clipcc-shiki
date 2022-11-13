@@ -1,0 +1,10 @@
+@import "css/units.scss";
+
+body {
+    margin: 0;
+    min-width: 1180px;
+}
+
+.monaco-editor-background {
+    border-radius: $radius;
+}

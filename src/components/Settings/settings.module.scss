@@ -1,0 +1,40 @@
+@import "src/css/color.scss";
+@import "src/css/units.scss";
+
+.container {
+    min-width: 518px;
+    min-height: 718px;
+    max-height: 718px;
+    overflow: auto;
+    background-color: white;
+    border-radius: $radius;
+    padding: 1rem;
+    filter: drop-shadow(0 0 1em rgba(0, 0, 0, 0.1));
+}
+
+.title {
+    margin: 0.5rem;
+    font-weight: 600;
+    font-size: 21px;
+}
+
+.subtitle {
+    font-size: 18px;
+    margin: 0.3rem;
+    font-weight: 500;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    .item {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-left: 1rem;
+        .name {
+            font-weight: 450;
+            flex-grow: 1;
+        }
+    }
+}

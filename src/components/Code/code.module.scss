@@ -1,0 +1,13 @@
+@import "src/css/color.scss";
+@import "src/css/units.scss";
+
+.container {
+    display: flex;
+    height: 750px;
+    width: auto;
+    min-width: 550px;
+    filter: drop-shadow(0 0 1em rgba(0, 0, 0, 0.1));
+    div {
+        border-radius: $radius;
+    }
+}

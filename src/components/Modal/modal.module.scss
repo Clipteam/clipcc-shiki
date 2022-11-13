@@ -1,0 +1,51 @@
+@import "src/css/color.scss";
+@import "src/css/units.scss";
+
+.overlay {
+    display: flex;
+    position: fixed;
+    z-index: 500;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.6);
+    transition: ease $animation-duration;
+}
+
+.card {
+    margin: auto;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: 300px;
+    background-color: $plain-color;
+    border-radius: $radius;
+    filter: drop-shadow(0 0 1em rgba(0, 0, 0, 0.1));
+    transition: ease $animation-duration;
+}
+
+.top {
+    justify-content: center;
+    margin-top: 0.5rem;
+    width: 100%;
+    height: 1rem;
+    align-items: center;
+    display: flex;
+}
+
+.spacer {
+    flex-grow: 0.55;
+}
+
+.title {
+    flex-grow: 0.45;
+    font-weight: 600;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

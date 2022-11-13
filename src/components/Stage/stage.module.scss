@@ -1,0 +1,24 @@
+@import "src/css/color.scss";
+@import "src/css/units.scss";
+
+.control {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1rem;
+}
+
+.spacer {
+    margin: 0 0.2rem;
+}
+
+.elastic {
+    display: flex;
+    flex-grow: 1;
+}
+
+.stage {
+    width: 480px;
+    height: 360px;
+    background-color: $disabled-color;
+    border-radius: $radius;
+}

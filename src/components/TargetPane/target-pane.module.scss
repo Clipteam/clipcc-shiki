@@ -1,0 +1,32 @@
+@import "src/css/color.scss";
+@import "src/css/units.scss";
+
+.pane {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1rem;
+}
+
+.unit {
+    .label {
+        font-weight: 600;
+        margin-right: 0.5rem;
+    }
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 0.5rem;
+}
+
+.empty {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.tips {
+    margin: 0.1rem;
+    color: $tips-color;
+}

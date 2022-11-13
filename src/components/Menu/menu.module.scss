@@ -1,0 +1,43 @@
+@import "src/css/color.scss";
+@import "src/css/units.scss";
+
+.menu {
+    margin-top: 3rem;
+    padding: 0.25rem;
+    display: flex;
+    flex-direction: column;
+    top: 0;
+    position: absolute;
+    z-index: 100;
+    background-color: white;
+    border-radius: $radius;
+    animation: slide $animation-duration ease;
+    filter: drop-shadow(0 0 1em rgba(0, 0, 0, 0.1));
+}
+
+.closed {
+    display: none;
+}
+
+.item {
+    min-width: 8rem;
+    height: 2.5rem;
+    line-height: 2rem;
+    padding: 0.1rem 1rem;
+    display: flex;
+    align-items: center;
+    .text {
+        margin: 0;
+    }
+}
+
+@keyframes slide {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

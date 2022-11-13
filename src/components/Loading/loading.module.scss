@@ -1,0 +1,53 @@
+@import "src/css/color.scss";
+@import "src/css/units.scss";
+
+@keyframes animate-clip-stroke {
+    0% {
+        stroke-dashoffset: 367.1521911621094px;
+        stroke-dasharray: 367.1521911621094px;
+        stroke-width: 0;
+    }
+
+    5% {
+        stroke-width: 7.4;
+    }
+
+    25% {
+        stroke-dashoffset: 0;
+        stroke-dasharray: 367.1521911621094px;
+        filter: drop-shadow(0 0 1.5em $primary-color-transparent);
+    }
+
+    75% {
+        stroke-dashoffset: 0;
+        stroke-dasharray: 367.1521911621094px;
+    }
+
+    100% {
+        stroke-dashoffset: -367.1521911621094px;
+        stroke-dasharray: 367.1521911621094px;
+        stroke-width: 7.5;
+    }
+}
+
+.preloaderIconClip {
+    -webkit-animation: animate-clip-stroke 2.5s cubic-bezier(0.77, 0, 0.175, 1) infinite;
+    animation: animate-clip-stroke 2.5s cubic-bezier(0.77, 0, 0.175, 1) infinite;
+}
+
+.preloader-text {
+    text-align: center;
+    -webkit-animation: animate-clip-text 1s linear 2s both;
+    animation: animate-clip-text 1s linear 2s both;
+}
+
+.preloader {
+    margin: 0.4rem;
+    color: $primary-color;
+    display:flex;
+}
+@media (prefers-color-scheme: dark) {
+    .preloader {
+        color: white;
+    }
+}
