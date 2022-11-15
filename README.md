@@ -1,6 +1,6 @@
 <div align="center" style="filter: drop-shadow(0 0 1em rgba(0, 0, 0, 0.1))">
 
-<img src="https://raw.githubusercontent.com/Clipteam/clipcc-shiki/master/logo.png" alt="logo" width="300"/>
+<img src="https://raw.githubusercontent.com/Clipteam/clipcc-shiki/master/logo.png" alt="logo" width="200" height="200" />
 
 # ClipCC (Shiki)
 #### 🧬 The next generation of ClipCC.
