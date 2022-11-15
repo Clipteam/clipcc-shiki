@@ -9,7 +9,7 @@ const STATIC_PATH = process.env.STATIC_PATH || '/static';
 
 module.exports = {
     mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
-    entry: "/src/main.jsx",
+    entry: "./src/main.jsx",
     stats: 'errors-warnings',
     devServer: {
         port: process.env.PORT || 5704,
