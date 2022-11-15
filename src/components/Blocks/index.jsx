@@ -4,7 +4,7 @@ import styles from './block.module.scss';
 import Loading from '../Loading';
 import initializeBlocks from '../../lib/blocks.js';
 import { useAtom } from 'jotai';
-import { VMJotai } from '../../jotai/instances.js';
+import { VMJotai, BlockJotai } from '../../jotai/instances.js';
 
 class _ScratchBlocks extends React.Component {
     constructor () {
@@ -45,6 +45,7 @@ class _ScratchBlocks extends React.Component {
             collapse: false,
             sounds: false
         });
+        this.props.setBlockInstance(this.ScratchBlocks);
         this.props.setLoaded(true);
     }
     
@@ -74,8 +75,16 @@ class _ScratchBlocks extends React.Component {
 
 const ScratchBlocks = (props) => {
     const [VM] = useAtom(VMJotai);
+    const [Block, setBlock] = useAtom(BlockJotai);
     const [loaded, setLoaded] = React.useState(false);
-    return <_ScratchBlocks vm={VM} hasLoaded={loaded} setLoaded={setLoaded} {...props} />;
+    return (
+        <_ScratchBlocks
+            vm={VM}
+            hasLoaded={loaded}
+            setLoaded={setLoaded}
+            setBlockInstance={setBlock}
+            {...props}
+        />);
 }
 
 export default ScratchBlocks;
