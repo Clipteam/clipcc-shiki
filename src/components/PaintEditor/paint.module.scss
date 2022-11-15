@@ -1,0 +1,13 @@
+@import "src/css/color.scss";
+@import "src/css/units.scss";
+
+.container {
+    min-width: 518px;
+    min-height: 718px;
+    max-height: 718px;
+    overflow: auto;
+    background-color: white;
+    border-radius: $radius;
+    padding: 1rem;
+    filter: drop-shadow(0 0 1em rgba(0, 0, 0, 0.1));
+}

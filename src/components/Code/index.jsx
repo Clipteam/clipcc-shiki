@@ -20,7 +20,6 @@ class CodeEditor extends React.Component {
                     enabled: false
                 }
             });
-            console.log(this.monacoInstance)
         }
     }
     

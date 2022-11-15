@@ -17,8 +17,15 @@
 }
 
 .stage {
+    display: block;
     width: 480px;
     height: 360px;
-    background-color: $disabled-color;
+    overflow: hidden;
+    background-color: transparent;
+    border: 1px solid $disabled-color;
     border-radius: $radius;
+    /* Make sure border is not included in size calculation */
+    box-sizing: content-box !important;
+    /* enforce overflow + reset position of absolutely-positioned children */
+    position: relative;
 }

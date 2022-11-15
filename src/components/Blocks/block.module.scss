@@ -1,4 +1,36 @@
+@import "src/css/color.scss";
+@import "src/css/units.scss";
+
 .container {
-    width: 500px;
-    height: 800px;
+    overflow: hidden;
+    min-width: 550px;
+    min-height: 750px;
+    background-color: white;
+    border-radius: $radius;
+    filter: drop-shadow(0 0 1em rgba(0, 0, 0, 0.1));
+    .loading {
+        padding: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        flex-direction: column;
+        p {
+            color: $tips-color;
+            font-weight: 500;
+            animation: 1.25s grad infinite;
+        }
+    }
+}
+
+@keyframes grad {
+    0% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.5;
+    }
 }

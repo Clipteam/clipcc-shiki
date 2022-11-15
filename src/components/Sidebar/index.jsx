@@ -15,6 +15,7 @@ const Sidebar = ({selecting, onChange}) => {
     return (
         <div className={styles.container}>
             <Button
+                disabled
                 useShadow={selecting ==='code'}
                 color={selecting ==='code' && 'primary'}
                 onClick={() => {
@@ -24,7 +25,6 @@ const Sidebar = ({selecting, onChange}) => {
                 <Code size='1.8em' className={styles.icon} />
             </Button>
             <Button
-                disabled
                 useShadow={selecting ==='block'}
                 color={selecting ==='block' && 'primary'}
                 onClick={() => {

@@ -1,45 +1,81 @@
 import * as React from 'react';
 import bindAll from 'lodash.bindall';
 import styles from './block.module.scss';
-class ScratchBlocks extends React.Component {
+import Loading from '../Loading';
+import initializeBlocks from '../../lib/blocks.js';
+import { useAtom } from 'jotai';
+import { VMJotai } from '../../jotai/instances.js';
+
+class _ScratchBlocks extends React.Component {
     constructor () {
         super();
-        this.state = {
-            hasLoaded: false
-        };
-        this.Blocks = null;
+        this.blocksElem = React.createRef();
         this.BlocksComponentRef = React.createRef();
         bindAll(this, ['loadBlocks']);
     }
     
     async loadBlocks () {
-        // idk but cannot work
-        /*
-        if (this.state.hasLoaded) console.warn('reloading blocks...');
-        import('scratch-blocks').then(data => {
-            this.Blocks = data.default;
-            this.setState({hasLoaded: true});
+        if (this.props.hasLoaded) console.warn('reloading blocks...');
+        this.ScratchBlocks = await initializeBlocks(this.props.vm);
+        this.workspace = this.ScratchBlocks.inject(this.blocksElem.current, {
+            media: `static/assets/blocks-media/`,
+            zoom: {
+                controls: true,
+                wheel: true,
+                startScale: 0.675
+            },
+            grid: {
+                spacing: 40,
+                length: 2,
+                colour: '#ddd'
+            },
+            colours: {
+                workspace: '#F9F9F9',
+                flyout: '#F9F9F9',
+                toolbox: '#FFFFFF',
+                toolboxSelected: '#E9EEF2',
+                scrollbar: '#CECDCE',
+                scrollbarHover: '#CECDCE',
+                insertionMarker: '#000000',
+                insertionMarkerOpacity: 0.2,
+                fieldShadow: 'rgba(255, 255, 255, 0.3)',
+                dragShadowOpacity: 0.6
+            },
+            comments: true,
+            collapse: false,
+            sounds: false
         });
-        */
+        this.props.setLoaded(true);
     }
     
-    componentDidUpdate (prevProps, prevState) {
-        if (prevState.hasLoaded !== this.state.hasLoaded) {
-            if (this.BlocksComponentRef.current) {
-                console.log(this);
-            }
-        }
+    componentDidMount () {
+        const { hasLoaded, vm } = this.props;
+        if (!hasLoaded && vm) this.loadBlocks();
+    }
+    
+    componentDidUpdate (prevProps) {
+        if (prevProps.vm !== this.props.vm) this.loadBlocks();
     }
     
     render () {
-        const { hasLoaded } = this.state;
-        if (!hasLoaded) this.loadBlocks();
+        const { hasLoaded } = this.props;
         return (
-            <div ref={this.BlocksComponentRef} className={styles.container}>
-                {hasLoaded ? this.Blocks : 'WIP blocks'}
+            <div ref={this.blocksElem} className={styles.container}>
+                {!hasLoaded && (
+                    <div className={styles.loading}>
+                        <Loading size={64} />
+                        <p>Loading Blocks...</p>
+                    </div>
+                )}
             </div>
         );
     }
+}
+
+const ScratchBlocks = (props) => {
+    const [VM] = useAtom(VMJotai);
+    const [loaded, setLoaded] = React.useState(false);
+    return <_ScratchBlocks vm={VM} hasLoaded={loaded} setLoaded={setLoaded} {...props} />;
 }
 
 export default ScratchBlocks;
