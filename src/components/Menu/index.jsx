@@ -5,20 +5,23 @@ import classNames from 'classnames';
 const Menu = ({items, open, children}) => {
     return (
         <>
-            {children}
             <div
                 className={classNames(
                 styles.menu,
                 styles[open ? 'open' : 'closed'])}
             >
-                {items.map((item, index) => (
-                    <div className={styles.item} onClick={() => {
-                        if (item.onClick) item.onClick();
-                    }}>
-                        <p className={styles.text}>{item.text}</p>
-                    </div>
-                ))}
+                {items.map((item, index) => {
+                    if (item.divider) return <div key={index} className={styles.divider} />;
+                    return (
+                        <div className={styles.item} onClick={(e) => {
+                            if (item.onClick) item.onClick(e);
+                        }} key={index}>
+                            <p className={styles.text}>{item.text}</p>
+                        </div>
+                    );
+                })}
             </div>
+            {children}
         </>
     );
 };

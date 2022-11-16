@@ -22,6 +22,15 @@ const MenuBar = ({
     const [aboutModalOpen, setAboutModalOpen] = useAtom(aboutModalJotai);
     const [fileMenuOpen, setFileMenuOpen] = React.useState(false);
     
+    React.useEffect(() => {
+        const closeMenu = () => {
+            setFileMenuOpen(false);
+        };
+        document.addEventListener('click', closeMenu);
+        return () =>{
+            document.removeEventListener('click', closeMenu);
+        };
+    }, []);
     return (
         <div className={styles.menu}>
             <img
@@ -36,16 +45,30 @@ const MenuBar = ({
                     open={fileMenuOpen}
                     items={[{
                         text: 'New',
-                        onClick: () => {}
+                        onClick: () => {
+                            setFileMenuOpen(false);
+                        }
+                    }, {
+                        divider: true
+                    }, {
+                        text: 'Load',
+                        onClick: () => {
+                            setFileMenuOpen(false);
+                        }
                     }, {
                         text: 'Save',
-                        onClick: () => {}
+                        onClick: () => {
+                            setFileMenuOpen(false);
+                        }
                     }, {
                         text: 'Save as',
-                        onClick: () => {}
+                        onClick: () => {
+                            setFileMenuOpen(false);
+                        }
                     }]}
                 >
-                    <Button onClick={() => {
+                    <Button onClick={(e) => {
+                        e.nativeEvent.stopImmediatePropagation();
                         setFileMenuOpen(!fileMenuOpen);
                     }}><FolderCode /> File</Button>
                 </Menu>

@@ -3,6 +3,8 @@
 
 .overlay {
     display: flex;
+    width: 100%;
+    height: 100%;
     position: fixed;
     z-index: 500;
     top: 0;
@@ -23,7 +25,8 @@
     background-color: $plain-color;
     border-radius: $radius;
     filter: drop-shadow(0 0 1em rgba(0, 0, 0, 0.1));
-    transition: ease $animation-duration;
+    transition: $animation-duration ease all;
+    animation: scale $animation-duration cubic-bezier(.25,.1,.3,1.5);
 }
 
 .top {
@@ -48,4 +51,15 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+@keyframes scale {
+    from {
+        transform: scale(0.6);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
 }

@@ -2,11 +2,11 @@
 @import "src/css/units.scss";
 
 .menu {
+    top: 0;
     margin-top: 3rem;
     padding: 0.25rem;
     display: flex;
     flex-direction: column;
-    top: 0;
     position: absolute;
     z-index: 100;
     background-color: white;
@@ -28,7 +28,15 @@
     align-items: center;
     .text {
         margin: 0;
+        font-weight: 500;
     }
+}
+
+.divider {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+    padding: 0;
+    height: 0;
+    margin: 0.2rem;
 }
 
 @keyframes slide {
