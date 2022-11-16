@@ -16,8 +16,9 @@ module.exports = {
         hot: true
     },
     output: {
+        library: 'GUI',
         path: path.resolve(__dirname, "dist"),
-        publicPath: "/",
+        filename: '[name].[contenthash].bundle.js',
         clean: true
     },
     resolve: {
@@ -73,6 +74,21 @@ module.exports = {
     ],
     optimization: {
         minimize: true,
-        minimizer: [new TerserPlugin()]
+        splitChunks: {
+            chunks: 'all',
+            minChunks: 2,
+            maxInitialRequests: 5
+        },
+        minimizer: [
+            new TerserPlugin({
+                parallel: true,
+                terserOptions: {
+                    format: {
+                        comments: false,
+                    },
+                },
+                extractComments: false,
+            })
+        ]
     },
 };
