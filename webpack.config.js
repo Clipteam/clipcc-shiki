@@ -3,9 +3,10 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const NodePolyfillPlugin = require("node-polyfill-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 const NODE_ENV = process.env.NODE_ENV || 'development';
-const STATIC_PATH = process.env.STATIC_PATH || '/static';
 
 module.exports = {
     mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
@@ -49,11 +50,7 @@ module.exports = {
         },
         {
             test: /\.(svg|png|wav|gif|jpg)$/,
-            loader: 'file-loader',
-            options: {
-                outputPath: 'static/assets/',
-                publicPath: `${STATIC_PATH}/assets/`
-            }
+            loader: 'file-loader'
         },
         {
             test: /\.s[ac]ss$/i,
@@ -70,7 +67,8 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: "./src/index.html",
         }),
-        new NodePolyfillPlugin() // fixed other clipcc dependencies problem
+        new NodePolyfillPlugin(), // fixed other clipcc dependencies problem
+        new MiniCssExtractPlugin()
     ],
     optimization: {
         minimize: true,
@@ -88,7 +86,8 @@ module.exports = {
                     },
                 },
                 extractComments: false,
-            })
+            }),
+            new CssMinimizerPlugin(),
         ]
     },
 };

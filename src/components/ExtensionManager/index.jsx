@@ -18,6 +18,9 @@ class ExtensionManager extends React.Component {
             isLoading: true
         };
         bindAll(this, ['loadExtensionsOnline']);
+    }
+    
+    componentDidMount () {
         this.loadExtensionsOnline();
     }
     

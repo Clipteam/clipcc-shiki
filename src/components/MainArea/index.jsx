@@ -4,7 +4,7 @@ import Sidebar from '../Sidebar';
 import Blocks from '../Blocks';
 import ExtensionManager from '../ExtensionManager';
 import Settings from '../Settings';
-import CodeEditor from '../Code';
+// import CodeEditor from '../Code';
 import PaintEditor from '../PaintEditor';
 import Stage from '../Stage';
 import TargetPane from '../TargetPane';
@@ -23,7 +23,7 @@ const MainArea = ({
             />
             <div className={styles.spacer} />
             {selected === 'block' && <Blocks />}
-            {selected === 'code' && <CodeEditor />}
+            {/*selected === 'code' && <CodeEditor />*/}
             {selected === 'paint' && <PaintEditor />}
             {selected === 'extension' && <ExtensionManager />}
             {selected === 'options' && <Settings />}

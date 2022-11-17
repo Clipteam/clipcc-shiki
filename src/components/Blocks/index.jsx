@@ -11,12 +11,17 @@ class _ScratchBlocks extends React.Component {
         super();
         this.blocksElem = React.createRef();
         this.BlocksComponentRef = React.createRef();
-        bindAll(this, ['loadBlocks']);
+        bindAll(this, ['loadBlocks', 'handleResize']);
+    }
+    
+    handleResize () {
+        window.dispatchEvent(new Event('resize'));
     }
     
     async loadBlocks () {
         if (this.props.hasLoaded) console.warn('reloading blocks...');
         this.ScratchBlocks = await initializeBlocks(this.props.vm);
+        this.blocksElem.current.addEventListener('resize', this.handleResize);
         this.workspace = this.ScratchBlocks.inject(this.blocksElem.current, {
             media: `static/assets/blocks-media/`,
             zoom: {
@@ -45,6 +50,15 @@ class _ScratchBlocks extends React.Component {
             collapse: false,
             sounds: false
         });
+        
+        // we actually never want the workspace to enable "refresh toolbox" - this basically re-renders the
+        // entire toolbox every time we reset the workspace.  We call updateToolbox as a part of
+        // componentDidUpdate so the toolbox will still correctly be updated
+        this.setToolboxRefreshEnabled = this.workspace.setToolboxRefreshEnabled.bind(this.workspace);
+        this.workspace.setToolboxRefreshEnabled = () => {
+            this.setToolboxRefreshEnabled(false);
+        };
+
         this.props.setBlockInstance(this.ScratchBlocks);
         this.props.setLoaded(true);
     }
@@ -56,6 +70,11 @@ class _ScratchBlocks extends React.Component {
     
     componentDidUpdate (prevProps) {
         if (prevProps.vm !== this.props.vm) this.loadBlocks();
+        window.dispatchEvent(new Event('resize'));
+    }
+    
+    componentWillUnmount () {
+        this.blocksElem.current.removeEventListener('resize', this.handleResize);
     }
     
     render () {

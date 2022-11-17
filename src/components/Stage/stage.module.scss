@@ -3,8 +3,17 @@
 
 .control {
     display: flex;
+    align-items: center;
     flex-direction: row;
     margin-bottom: 1rem;
+}
+
+.turbo {
+    display: flex;
+    align-items: center;
+    color: $warning-color;
+    font-size: 12px;
+    font-weight: 500;
 }
 
 .spacer {

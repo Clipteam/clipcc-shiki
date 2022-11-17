@@ -5,13 +5,16 @@ import {
     Mark,
     Pause,
     Close,
-    FullScreenOne
+    FullScreenOne,
+    Lightning
 } from '@icon-park/react';
 import { useAtom } from 'jotai';
+import { turboModeJotai } from '../../jotai/status.js';
 import { VMJotai } from '../../jotai/instances.js';
 
 const Stage = () => {
     const [VM] = useAtom(VMJotai);
+    const [turboMode, setTurboMode] = useAtom(turboModeJotai);
     React.useLayoutEffect(() => {
         if (VM) {
             VM.start();
@@ -35,6 +38,12 @@ const Stage = () => {
                 }}>
                     <Close />
                 </Button>
+                <div className={styles.spacer} />
+                {turboMode && (
+                    <div className={styles.turbo}>
+                        <Lightning theme="filled" /> Turbo Mode
+                    </div>
+                )}
                 <div className={styles.elastic} />
                 <Button size='small' color='primary'>
                     <FullScreenOne />

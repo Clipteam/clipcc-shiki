@@ -9,6 +9,7 @@ import Loading from '../Loading';
 import Menu from '../Menu';
 import { useAtom } from 'jotai';
 import { aboutModalJotai } from '../../jotai/modal.js';
+import { turboModeJotai } from '../../jotai/status.js';
 import {
     InboxOut,
     FolderCode,
@@ -20,12 +21,16 @@ const MenuBar = ({
     showLogo
 }) => {
     const [aboutModalOpen, setAboutModalOpen] = useAtom(aboutModalJotai);
+    const [turboMode, setTurboMode] = useAtom(turboModeJotai);
     const [fileMenuOpen, setFileMenuOpen] = React.useState(false);
+    const [editMenuOpen, setEditMenuOpen] = React.useState(false);
+    
+    const closeMenu = () => {
+        setFileMenuOpen(false);
+        setEditMenuOpen(false);
+    };
     
     React.useEffect(() => {
-        const closeMenu = () => {
-            setFileMenuOpen(false);
-        };
         document.addEventListener('click', closeMenu);
         return () =>{
             document.removeEventListener('click', closeMenu);
@@ -46,34 +51,57 @@ const MenuBar = ({
                     items={[{
                         text: 'New',
                         onClick: () => {
-                            setFileMenuOpen(false);
+                            closeMenu();
                         }
                     }, {
                         divider: true
                     }, {
                         text: 'Load',
                         onClick: () => {
-                            setFileMenuOpen(false);
+                            closeMenu();
                         }
                     }, {
                         text: 'Save',
                         onClick: () => {
-                            setFileMenuOpen(false);
+                            closeMenu();
                         }
                     }, {
                         text: 'Save as',
                         onClick: () => {
-                            setFileMenuOpen(false);
+                            closeMenu();
                         }
                     }]}
                 >
                     <Button onClick={(e) => {
+                        closeMenu();
                         e.nativeEvent.stopImmediatePropagation();
                         setFileMenuOpen(!fileMenuOpen);
                     }}><FolderCode /> File</Button>
                 </Menu>
                 <div className={styles.spacer} />
-                <Button><BringToFrontOne /> Edit</Button>
+                <Menu
+                    open={editMenuOpen}
+                    items={[{
+                        text: 'Restore',
+                        onClick: () => {
+                            closeMenu();
+                        }
+                    }, {
+                        divider: true
+                    }, {
+                        text: !!turboMode ? '✓ Turbo Mode' : 'Turbo Mode',
+                        onClick: (e) => {
+                            e.nativeEvent.stopImmediatePropagation();
+                            setTurboMode(!turboMode);
+                        }
+                    }]}
+                >
+                    <Button  onClick={(e) => {
+                        closeMenu();
+                        e.nativeEvent.stopImmediatePropagation();
+                        setEditMenuOpen(!editMenuOpen);
+                    }}><BringToFrontOne /> Edit</Button>
+                </Menu>
                 <div className={styles.spacer} />
                 <Button onClick={() => {
                     setAboutModalOpen(true);
