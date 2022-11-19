@@ -6,7 +6,7 @@
     height: $menubar-height;
     background-color: white;
     position: relative;
-    z-index: 99;
+    z-index: 500;
     filter: drop-shadow(0 0 1em rgba(0, 0, 0, 0.1));
     display: flex;
     border-bottom-left-radius: $radius;

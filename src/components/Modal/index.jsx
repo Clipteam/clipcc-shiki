@@ -1,16 +1,17 @@
 import React from 'react';
 import styles from './modal.module.scss';
+import classNames from 'classnames';
 import Button from '../Button';
 import {
     InboxOut,
     Close
 } from '@icon-park/react';
 
-const Modal = ({visible, onClose, title, children}) => {
+const Modal = ({visible, onClose, title, children, className}) => {
     if (!visible) return <div />;
     
     return (
-        <div className={styles.overlay} onClick={onClose}>
+        <div className={classNames(styles.overlay, className)} onClick={onClose}>
             <div className={styles.card}>
                 <div className={styles.top}>
                     <div className={styles.spacer} />

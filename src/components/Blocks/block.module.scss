@@ -2,10 +2,11 @@
 @import "src/css/units.scss";
 
 .container {
-    overflow: hidden;
+    // overflow: hidden;
     min-width: 550px;
     width: 100%;
     min-height: 750px;
+    z-index: 200;
     background-color: white;
     border-radius: $radius;
     filter: drop-shadow(0 0 1em rgba(0, 0, 0, 0.1));

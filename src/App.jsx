@@ -13,11 +13,13 @@ import { VMJotai } from './jotai/instances.js';
 const App = () => {
   const [aboutModalOpen] = useAtom(aboutModalJotai);
   const [VM, setVM] = useAtom(VMJotai);
+  const [loaded, setLoaded] = useState(false);
   
   // load vm before rendering
   useLayoutEffect(() => {
       if (!VM) {
           setVM(initializeVM());
+          setLoaded(true);
       }
       return () => {
           // Recycle vm
@@ -28,6 +30,7 @@ const App = () => {
       };
   }, []);
 
+  if (!loaded) return <></>;
   return (
     <div className="App">
       <AboutModal visible={aboutModalOpen} />

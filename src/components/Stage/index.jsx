@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './stage.module.scss';
 import Button from '../Button';
+import ScratchRender from 'clipcc-render';
 import {
     Mark,
     Pause,
@@ -17,6 +18,10 @@ const Stage = () => {
     const [turboMode, setTurboMode] = useAtom(turboModeJotai);
     React.useLayoutEffect(() => {
         if (VM) {
+            // Instantiate the renderer and connect it to the VM.
+            const canvas = document.getElementById('clipcc-stage');
+            const renderer = new ScratchRender(canvas);
+            VM.attachRenderer(renderer);
             VM.start();
         }
     }, []);

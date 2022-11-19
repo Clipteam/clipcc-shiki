@@ -9,9 +9,14 @@ import { aboutModalJotai } from '../../jotai/modal.js';
 const AboutModal = ({visible}) => {
     const [aboutModalOpen, setAboutModalOpen] = useAtom(aboutModalJotai);
     return (
-        <Modal visible={visible} title="About" onClose={() => {
-            setAboutModalOpen(false);
-        }}>
+        <Modal
+            visible={visible}
+            title="About"
+            onClose={() => {
+                setAboutModalOpen(false);
+            }}
+            className={styles.modal}
+        >
             <img
                 draggable={false}
                 alt="Logo"
