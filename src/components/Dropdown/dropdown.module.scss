@@ -1,0 +1,69 @@
+@import "src/css/color.scss";
+@import "src/css/units.scss";
+
+.overlay {
+    position: relative;
+}
+
+.card {
+    // Float it
+    position: absolute;
+    left: -5rem;
+    top: 0;
+    z-index: 501;
+    
+    // Card style
+    margin-top: 1rem;
+    background-color: white;
+    border-radius: $radius;
+    animation: slide $animation-duration ease;
+    filter: drop-shadow(0 0 1em rgba(0, 0, 0, 0.1));
+    // min-width: 156px;
+    // max-width: 250px;
+    
+    // Layout
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.25rem 0.4rem;
+}
+
+.item {
+    .icon {
+        display: none;
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+    
+    display: flex;
+    font-weight: 500;
+    padding: 0.5rem;
+    margin: 0.25rem 0;
+    border-radius: $radius;
+    transition: ease $animation-duration;
+    user-select: none;
+    white-space: nowrap;
+    animation: slide $animation-duration ease;
+}
+
+.item:hover {
+    background-color: $plain-color;
+}
+
+@keyframes slide {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.divider {
+    background: $plain-color;
+    height: 1.5px;
+    width: 150px;
+    margin: 0.25rem 0.1rem;
+}

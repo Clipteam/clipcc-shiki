@@ -15,6 +15,7 @@ const Sidebar = ({selecting, onChange}) => {
     return (
         <div className={styles.container}>
             <Button
+                size='square'
                 disabled
                 useShadow={selecting ==='code'}
                 color={selecting ==='code' && 'primary'}
@@ -22,18 +23,20 @@ const Sidebar = ({selecting, onChange}) => {
                     if (onChange && selecting !== 'code') onChange('code');
                 }}
             >
-                <Code size='1.8em' className={styles.icon} />
+                <Code size='1.6em' className={styles.icon} />
             </Button>
             <Button
+                size='square'
                 useShadow={selecting ==='block'}
                 color={selecting ==='block' && 'primary'}
                 onClick={() => {
                     if (onChange && selecting !== 'block') onChange('block');
                 }}
             >
-                <BlockNine size='1.8em' className={styles.icon} />
+                <BlockNine size='1.6em' className={styles.icon} />
             </Button>
             <Button
+                size='square'
                 disabled
                 useShadow={selecting ==='search'}
                 color={selecting ==='search' && 'primary'}
@@ -41,10 +44,11 @@ const Sidebar = ({selecting, onChange}) => {
                     if (onChange && selecting !== 'search') onChange('search');
                 }}
             >
-                <Search size='1.8em' className={styles.icon} />
+                <Search size='1.6em' className={styles.icon} />
             </Button>
             {/*<div className={styles.spacer} /> */}
             <Button
+                size='square'
                 disabled
                 useShadow={selecting ==='paint'}
                 color={selecting ==='paint' && 'primary'}
@@ -52,9 +56,10 @@ const Sidebar = ({selecting, onChange}) => {
                     if (onChange && selecting !== 'paint') onChange('paint');
                 }}
             >
-                <Platte size='1.8em' className={styles.icon} />
+                <Platte size='1.6em' className={styles.icon} />
             </Button>
             <Button
+                size='square'
                 disabled
                 useShadow={selecting ==='sound'}
                 color={selecting ==='sound' && 'primary'}
@@ -62,25 +67,27 @@ const Sidebar = ({selecting, onChange}) => {
                     if (onChange && selecting !== 'sound') onChange('sound');
                 }}
             >
-                <SoundWave size='1.8em' className={styles.icon} />
+                <SoundWave size='1.6em' className={styles.icon} />
             </Button>
             <Button
+                size='square'
                 useShadow={selecting ==='extension'}
                 color={selecting ==='extension' && 'primary'}
                 onClick={() => {
                     if (onChange && selecting !== 'extension') onChange('extension');
                 }}
             >
-                <MoreApp size='1.8em' className={styles.icon} />
+                <MoreApp size='1.6em' className={styles.icon} />
             </Button>
             <Button
+                size='square'
                 useShadow={selecting ==='options'}
                 color={selecting ==='options' && 'primary'}
                 onClick={() => {
                     if (onChange && selecting !== 'options') onChange('options');
                 }}
             >
-                <Setting size='1.8em' className={styles.icon} />
+                <Setting size='1.6em' className={styles.icon} />
             </Button>
         </div>
     );

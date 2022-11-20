@@ -89,7 +89,8 @@ const Settings = () => {
             type: 'number',
             width: 60,
             placeholder: '120',
-            default: settings.saveInterval
+            default: settings.saveInterval,
+            disabled: !settings.autoSave
         }, {
             id: 'saveSettings',
             label: 'Save Settings to Project',
@@ -107,6 +108,20 @@ const Settings = () => {
             default: settings.saveOptionalExtensions
         }]
     };
+    const blocks = {
+        title: 'Blocks',
+        items: [{
+            id: 'collapseFlyout',
+            label: 'Collapse flyout',
+            type: 'switch',
+            default: settings.collapseFlyout
+        }, {
+            id: 'smoothScrolling',
+            label: 'Smooth Scrolling',
+            type: 'switch',
+            default: settings.smoothScrolling
+        }]
+    };
     
     const reflector = (item, index) => {
         switch (item.type) {
@@ -119,6 +134,7 @@ const Settings = () => {
                         <Select
                             value={item.default}
                             options={item.options}
+                            disabled={item.disabled}
                             onChange={(value) => {
                                 if (item.onChange) item.onChange(value);
                                 setSettings(item.id, value);
@@ -134,6 +150,7 @@ const Settings = () => {
                         </p>
                         <Switch
                             defaultValue={item.default}
+                            disabled={item.disabled}
                             onChange={(checked) => {
                                 if (item.onChange) item.onChange(checked);
                                 setSettings(item.id, checked);
@@ -152,6 +169,7 @@ const Settings = () => {
                             width={item.width}
                             type='number'
                             placeholder={item.placeholder}
+                            disabled={item.disabled}
                             onChange={(value) => {
                                 if (item.onChange) item.onChange(value);
                                 setSettings(item.id, value);
@@ -169,6 +187,7 @@ const Settings = () => {
                             defaultValue={item.default}
                             width={item.width}
                             placeholder={item.placeholder}
+                            disabled={item.disabled}
                             onChange={(value) => {
                                 if (item.onChange) item.onChange(value);
                                 setSettings(item.id, value);
@@ -193,6 +212,10 @@ const Settings = () => {
             <p className={styles.subtitle}>{project.title}</p>
             <div className={styles.list}>
                 {project.items.map(reflector)}
+            </div>
+            <p className={styles.subtitle}>{blocks.title}</p>
+            <div className={styles.list}>
+                {blocks.items.map(reflector)}
             </div>
         </div>
     );

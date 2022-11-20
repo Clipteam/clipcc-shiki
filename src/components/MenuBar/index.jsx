@@ -6,7 +6,7 @@ import Button from '../Button';
 import Input from '../Input';
 import Avatar from '../Avatar';
 import Loading from '../Loading';
-import Menu from '../Menu';
+import Dropdown from '../Dropdown';
 import { useAtom } from 'jotai';
 import { aboutModalJotai } from '../../jotai/modal.js';
 import { turboModeJotai } from '../../jotai/status.js';
@@ -46,62 +46,27 @@ const MenuBar = ({
             />
             <div className={styles.spacer} />
             <div className={classNames(styles.group, styles.prefix)}>
-                <Menu
-                    open={fileMenuOpen}
-                    items={[{
-                        text: 'New',
-                        onClick: () => {
-                            closeMenu();
-                        }
-                    }, {
-                        divider: true
-                    }, {
-                        text: 'Load',
-                        onClick: () => {
-                            closeMenu();
-                        }
-                    }, {
-                        text: 'Save',
-                        onClick: () => {
-                            closeMenu();
-                        }
-                    }, {
-                        text: 'Save as',
-                        onClick: () => {
-                            closeMenu();
-                        }
-                    }]}
-                >
-                    <Button onClick={(e) => {
-                        closeMenu();
-                        e.nativeEvent.stopImmediatePropagation();
-                        setFileMenuOpen(!fileMenuOpen);
-                    }}><FolderCode /> File</Button>
-                </Menu>
+                <Dropdown>
+                    <Button><FolderCode /> File</Button>
+                    <Dropdown.Content>
+                        <Dropdown.Item>New</Dropdown.Item>
+                        <Dropdown.Divider />
+                        <Dropdown.Item>Load project</Dropdown.Item>
+                        <Dropdown.Item>Save project</Dropdown.Item>
+                        <Dropdown.Item>Save as...</Dropdown.Item>
+                    </Dropdown.Content>
+                </Dropdown>
                 <div className={styles.spacer} />
-                <Menu
-                    open={editMenuOpen}
-                    items={[{
-                        text: 'Restore',
-                        onClick: () => {
-                            closeMenu();
-                        }
-                    }, {
-                        divider: true
-                    }, {
-                        text: !!turboMode ? '✓ Turbo Mode' : 'Turbo Mode',
-                        onClick: (e) => {
-                            e.nativeEvent.stopImmediatePropagation();
-                            setTurboMode(!turboMode);
-                        }
-                    }]}
-                >
-                    <Button  onClick={(e) => {
-                        closeMenu();
-                        e.nativeEvent.stopImmediatePropagation();
-                        setEditMenuOpen(!editMenuOpen);
-                    }}><BringToFrontOne /> Edit</Button>
-                </Menu>
+                <Dropdown>
+                    <Button><BringToFrontOne /> Edit</Button>
+                    <Dropdown.Content>
+                        <Dropdown.Item>Restore</Dropdown.Item>
+                        <Dropdown.Divider />
+                        <Dropdown.Item>Turn on turbo mode</Dropdown.Item>
+                        <Dropdown.Item>Turn on compile mode</Dropdown.Item>
+                        <Dropdown.Item>Turn on single step mode</Dropdown.Item>
+                    </Dropdown.Content>
+                </Dropdown>
                 <div className={styles.spacer} />
                 <Button onClick={() => {
                     setAboutModalOpen(true);

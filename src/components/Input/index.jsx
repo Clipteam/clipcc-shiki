@@ -7,14 +7,13 @@ const Input = ({
     defaultValue,
     disabled,
     onChange,
-    bordered,
     width,
     type = 'text'
 }) => {
     return (
         <input
             className={classNames(styles.input, {
-                [styles.bordered]: !!bordered
+                [styles.disabled]: disabled
             })}
             style={{
                 width: width

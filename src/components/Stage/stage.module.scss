@@ -37,4 +37,5 @@
     box-sizing: content-box !important;
     /* enforce overflow + reset position of absolutely-positioned children */
     position: relative;
+    touch-action: none;
 }

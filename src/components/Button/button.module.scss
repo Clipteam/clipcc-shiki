@@ -35,6 +35,7 @@
 
 .button:hover {
   filter: brightness(.95);
+  cursor: pointer;
   .shadow {
     filter: brightness(.95) drop-shadow(0 0 2em plain-color)
   }
@@ -86,6 +87,10 @@
 
 .small {
   padding: 0.4em 0.8em;
+}
+
+.square {
+  padding: 0.6em 0.6em;
 }
 
 .xs {

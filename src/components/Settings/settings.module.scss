@@ -3,9 +3,9 @@
 
 .container {
     min-width: 518px;
-    width: 100%;
     min-height: 718px;
-    max-height: 718px;
+    width: 100%;
+    height: 100vh;
     overflow: auto;
     background-color: white;
     border-radius: $radius;

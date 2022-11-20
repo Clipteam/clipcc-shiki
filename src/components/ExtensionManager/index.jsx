@@ -8,6 +8,7 @@ import builtinExtensions from '../../lib/builtin-extensions.js';
 import Button from '../Button';
 import Loading from '../Loading';
 import axios from 'axios';
+import classNames from 'classnames';
 class ExtensionManager extends React.Component {
     constructor () {
         super();
@@ -71,13 +72,14 @@ class ExtensionManager extends React.Component {
                         </div>
                     ))}
                 </div>
+                <div className={styles.elastic} />
                 <p className={styles.subtitle}>Online</p>
                 {isLoading ? (
                     <div className={styles.loading}>
                         <Loading size={48} />
                     </div>
                 ) : (
-                    <div className={styles.list}>
+                    <div className={classNames(styles.list)}>
                         {onlineExtensions.map((extension, index) => (
                             <div className={styles.card} key={index}>
                                 <div className={styles.overlay}>

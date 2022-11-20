@@ -16,6 +16,7 @@
 .slider {
   position: absolute;
   cursor: pointer;
+  border: 2px solid transparent;
   top: 0;
   left: 0;
   right: 0;
@@ -30,8 +31,8 @@
   content: "";
   height: 22px;
   width: 22px;
-  left: 4px;
-  bottom: 4px;
+  left: 2px;
+  bottom: 2px;
   background-color: white;
   transition: ease $animation-duration;
   border-radius: 1rem;
@@ -56,5 +57,17 @@
     }
     100% {
         width: 22px;
+    }
+}
+
+.disabled {
+    .slider {
+        background: repeating-linear-gradient(45deg, white, white 15px, #fafafa 0, #fafafa 30px);
+        border: 2px solid $disabled-color;
+        filter: unset !important;
+    }
+    
+    .slider:before {
+        background-color: $disabled-color;
     }
 }
